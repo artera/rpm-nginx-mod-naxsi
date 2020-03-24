@@ -6,7 +6,7 @@ Vendor: Artera
 URL: https://github.com/nbs-system/naxsi
 
 %define _modname            naxsi
-%define _nginxver           1.16.1
+%define _nginxver           @NGINXVER@
 %define nginx_config_dir    %{_sysconfdir}/nginx
 %define nginx_build_dir     %{_builddir}/nginx-%{_nginxver}
 %define mod_build_dir       %{_builddir}/%{_modname}-%{version}
