@@ -1,7 +1,7 @@
 Summary: Nginx Anti XSS & SQL Injection (module for mainline nginx)
 Name: nginx-mod-naxsi
-Version: 0.56
-Release: 2%{?dist}
+Version: 1.3
+Release: 1%{?dist}
 Vendor: Artera
 URL: https://github.com/nbs-system/naxsi
 
