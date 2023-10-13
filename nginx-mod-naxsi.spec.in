@@ -1,3 +1,8 @@
+# Build against OpenSSL 3 on EL8
+%if 0%{?rhel} == 8
+%global openssl_pkgversion 3
+%endif
+
 Summary: Nginx Anti XSS & SQL Injection (module for mainline nginx)
 Name: nginx-mod-naxsi
 Version: 0.56
@@ -19,8 +24,8 @@ BuildRequires: nginx
 BuildRequires: libtool
 BuildRequires: autoconf
 BuildRequires: automake
-BuildRequires: openssl-devel
-BuildRequires: pcre-devel
+BuildRequires: openssl%{?openssl_pkgversion}-devel
+BuildRequires: pcre2-devel
 BuildRequires: zlib-devel
 BuildRequires: perl-devel
 BuildRequires: gd-devel
@@ -43,7 +48,7 @@ NAXSI is an open-source, high performance, low rules maintenance WAF for NGINX.
 
 %build
 cd %{_builddir}/nginx-%{_nginxver}
-./configure %(nginx -V 2>&1 | grep 'configure arguments' | sed -r 's@^[^:]+: @@') --add-dynamic-module=../%{_modname}-%{version}/naxsi_src
+./configure --with-compat --add-dynamic-module=../%{_modname}-%{version}/naxsi_src
 make modules
 
 %install
